@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mysqli_num_rows($result) == 1) {
         $user = mysqli_fetch_assoc($result);
 
-        if (password_verify($password, $user['password'])) {
+        if ($password == $user['password']) {
             // Password is correct, set session variables or tokens for authentication
             $_SESSION['user_id'] = $user['doctor_id'];
             $_SESSION['role'] = $user['role'];
